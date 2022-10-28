@@ -4,8 +4,8 @@ const pronote = require("pronote-api");
 
 // Exemple
 const url = "https://www.toutatice.fr/portail/auth/pagemarker/2/MonEspace";
-const username = "H.cossec1";
-const password = "Maison99100";
+const username = "*******";
+const password = "*********";
 
 async function main() {
   const session = await pronote.login(url, username, password /*, cas*/);
