@@ -1,34 +1,29 @@
 // RECUPERER L'API Pronote PUIS PRENDRE les infos
-// ENT "Toutatice" (Rennes) (CAS : toutatice, URL : "www.toutatice.fr") https://0220058u.pronote.toutatice.fr/pronote
-const pronote = require("pronote-api-maintained");
+// ENT "Toutatice" (Rennes) (CAS : toutatice, URL : "www.toutatice.fr") https://0220058u.pronote.toutatice.fr/pronote/
+//include("pronote-api-maintained/bin/donnéeAPI.js");
 
-// Exemple
-const url = "https://www.toutatice.fr/portail/auth/pagemarker/2/MonEspace";
-const username = "H.cossec1";
-const password = "Maison99100";
+var getUser = 0;
+var getKey = 0;
 
-async function main() {
-  const session = await pronote.login(url, username, password /*, cas*/);
+function result() {
+  let nameUser = document.getElementById("Nom d'utilisateur").value;
+  let key = document.getElementById("Mot de passe").value;
 
-  console.log(session.user.name); // Affiche le nom de l'élève
-  console.log(session.user.studentClass.name); // Affiche la classe de l'élève
-
-  const timetable = await session.timetable(); // Récupérer l'emploi du temps d'aujourd'hui
-  const marks = await session.marks(); // Récupérer les notes du trimestre
-
-  console.log(`L'élève a ${timetable.length} cours aujourd'hui`);
-  console.log(
-    `et a pour l'instant une moyenne de ${marks.averages.student} ce trimestre.`
-  );
-
-  // etc. les fonctions utilisables sont 'timetable', 'marks', 'contents', 'evaluations', 'absences',
-  // 'homeworks', 'infos', et 'menu', sans oublier les champs 'user' et 'params' qui regorgent d'informations.
+  /* Sauvegarder les donnees dans une sessionStorage*/
+  sessionStorage.setItem("Nom d'utilisateur", nameUser);
+  sessionStorage.setItem("Mot de passe", key);
 }
 
-main().catch((err) => {
-  if (err.code === pronote.errors.WRONG_CREDENTIALS.code) {
-    console.error("Mauvais identifiants");
-  } else {
-    console.error(err);
-  }
-});
+// recuperation des valeurs saisie par l'utilisateur dans notre sessionStorage
+window.onload = function () {
+  getUser = document.getElementById("Nom d'utilisateur").value =
+    sessionStorage.getItem("Nom d'utilisateur");
+  getKey = document.getElementById("Mot de passe").value =
+    sessionStorage.getItem("Mot de passe");
+  return getName, getSurname;
+};
+
+var DEMO_URL = "https://0220058u.pronote.toutatice.fr/pronote/";
+var DEMO_USERNAME = getUser;
+var DEMO_PASSWORD = getKey;
+console.log(DEMO_PASSWORD);
